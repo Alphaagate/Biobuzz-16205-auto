@@ -326,30 +326,30 @@ public class DriveTest extends OpMode {
         limelight.start(); // This tells Limelight to start looking!
         limelight.pipelineSwitch(0); // Switch to pipeline number 0
         follower.setPose(new Pose(22.55024711696869, 116.4481054365733, Math.toRadians(180)));
+        Scheduler.reset();
+        generatePaths();
         telemetry.addLine("Initialized - Ready!");
         telemetry.update();
     }
 
     public void start() {
+        createAutoCommands();
     }
 
     @Override
     public void loop() {
-
         follower.update();
-
+        Scheduler.execute();
         double velocity = (outtake.getVelocity());
         double error = vel - velocity;
         double feedback = error * 0.005;
         double feedforward = 0.00036 * vel + 0.08;
         outtake.setPower(feedback + feedforward);
         outtake2.setPower(feedback + feedforward);
-
         telemetry.addData("Follower Busy", follower.isBusy());
         telemetry.addData("X", follower.getPose().getX());
         telemetry.addData("Y", follower.getPose().getY());
         telemetry.addData("Heading (deg)", Math.toDegrees(follower.getPose().getHeading()));
-
         telemetry.update();
     }
 
