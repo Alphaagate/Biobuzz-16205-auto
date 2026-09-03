@@ -33,7 +33,7 @@ import com.qualcomm.hardware.limelightvision.LLResultTypes;
 import com.qualcomm.hardware.limelightvision.LLStatus;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 
-public abstract class DriveTest extends OpMode {
+public class DriveTest extends OpMode {
 
 
     protected Command updateShooter;
@@ -89,10 +89,6 @@ public abstract class DriveTest extends OpMode {
     protected PathChain shootCorner;
     protected PathChain park;
     protected PathChain shootCornerClose;
-
-    abstract void setPoses();
-
-    abstract void setColor();
 
     protected void createAutoCommands() {
 //        updateShooter = robot.updateShootingSubsystems();
@@ -317,7 +313,6 @@ public abstract class DriveTest extends OpMode {
                 .setConstantHeadingInterpolation(cornerBackupPose.getHeading()).build();
     }
 
-    abstract void adjustGoalPose();
 
     @Override
     public void init() {
