@@ -66,7 +66,6 @@ public class DriveTest extends OpMode {
     protected Pose farShootingPose = new Pose(51.247, 10.099);
     protected Pose parkPose = new Pose(45.747, 15.099);
     protected Pose closeParkPose = new Pose(56.990, 102.860, Math.toRadians(180));
-//    protected Pose goalPose = Constants.BLUE_GOAL_POSE;
     private Follower follower;
 
     public double vel;
@@ -91,11 +90,9 @@ public class DriveTest extends OpMode {
     protected PathChain shootCornerClose;
 
     protected void createAutoCommands() {
-//        updateShooter = robot.updateShootingSubsystems();
-
         double shootTime = 150;
 
-        schedule(updateShooter,
+        schedule(
                 sequential(
 //                        shootPreloads(),
                         race(
@@ -144,9 +141,9 @@ public class DriveTest extends OpMode {
 //                                        //() -> shootFar.beamBroken(),
 //                                        instant(() -> {}), // do nothing
 //                                        sequential(
-////                                                shootFar.setIntakePower(-1),
+//                                                shootFar.setIntakePower(-1),
 //                                                waitMs(50),
-////                                                shootFar.setIntakePower(0)
+//                                                shootFar.setIntakePower(0)
 //                                        )
 //                                )
                         ),
